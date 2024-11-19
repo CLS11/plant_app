@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/ui/login_page.dart';
+import 'package:plant_app/ui/root_page.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -12,6 +13,7 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _pageController = PageController(initialPage: 0);
   int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,17 +23,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         backgroundColor: Colors.white,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(
-              right: 20,
-              top: 20,
-            ),
+            padding: const EdgeInsets.only(right: 20, top: 20),
             child: InkWell(
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (_) => const Login(),
-                  ),
+                  MaterialPageRoute(builder: (_) => const RootPage()),
                 );
               },
               child: const Text(
@@ -57,17 +54,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             },
             controller: _pageController,
             children: [
-              createPage(
+              CreatePage(
                 image: 'assets/plant-one.png',
                 title: Constants.titleOne,
                 description: Constants.descriptionOne,
               ),
-              createPage(
+              CreatePage(
                 image: 'assets/plant-two.png',
                 title: Constants.titleTwo,
                 description: Constants.descriptionTwo,
               ),
-              createPage(
+              CreatePage(
                 image: 'assets/plant-three.png',
                 title: Constants.titleThree,
                 description: Constants.descriptionThree,
@@ -95,18 +92,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   setState(() {
                     if (currentIndex < 2) {
                       currentIndex++;
-                      if (currentIndex < 3) {
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
-                        );
-                      }
+                      _pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeIn,
+                      );
                     } else {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (_) => const Login(),
-                        ),
+                        MaterialPageRoute(builder: (_) => const RootPage()),
                       );
                     }
                   });
@@ -123,40 +116,31 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       ),
     );
   }
-}
 
-Widget _indicator(bool isActive) {
-  return AnimatedContainer(
-    duration: const Duration(milliseconds: 300),
-    height: 10,
-    width: isActive ? 20 : 8,
-    margin: const EdgeInsets.only(right: 5.0),
-    decoration: BoxDecoration(
-      color: Constants.primaryColor,
-      borderRadius: BorderRadius.circular(5),
-    ),
-  );
-}
+  Widget _indicator(bool isActive) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      height: 10,
+      width: isActive ? 20 : 8,
+      margin: const EdgeInsets.only(right: 5.0),
+      decoration: BoxDecoration(
+        color: Constants.primaryColor,
+        borderRadius: BorderRadius.circular(5),
+      ),
+    );
+  }
 
-List<Widget> _buildIndicator() {
-  List<Widget> indicators = [];
-
-  for (var i = 0; i < 3; i++) {
-    if (currentIndex == i) {
-      indicators.add(
-        _indicator(true),
-      );
-    } else {
-      indicators.add(
-        _indicator(true),
-      );
+  List<Widget> _buildIndicator() {
+    final indicators = <Widget>[];
+    for (var i = 0; i < 3; i++) {
+      indicators.add(_indicator(currentIndex == i));
     }
     return indicators;
   }
 }
 
-class createPage extends StatelessWidget {
-  const createPage(
+class CreatePage extends StatelessWidget {
+  const CreatePage(
       {required this.image,
       required this.title,
       required this.description,
