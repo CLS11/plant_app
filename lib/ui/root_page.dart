@@ -92,11 +92,7 @@ class _RootPageState extends State<RootPage> {
         notchSmoothness: NotchSmoothness.softEdge,
         icons: iconList,
         activeIndex: _bottomNavIndex,
-        onTap: (index) {
-          setState(() {
-            _bottomNavIndex = index;
-          });
-        },
+        onTap: (index) => setState(() => _bottomNavIndex = index),
       ),
     );
   }
