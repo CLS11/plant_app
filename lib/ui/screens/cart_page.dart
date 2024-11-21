@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/models/plants.dart';
+import 'package:plant_app/ui/screens/widgets/plant_widget.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({required this.addedToCartPlants, super.key});
