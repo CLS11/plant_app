@@ -12,6 +12,15 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  //Toggling the favorite button
+  bool toggleIsFavorated(bool isFavorited) {
+    return !isFavorited;
+  }
+
+  bool toggleIsSelected(bool isSelected) {
+    return !isSelected;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
