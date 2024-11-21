@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Plants {
   Plants({
     required this.plantId,
@@ -10,6 +12,7 @@ class Plants {
     required this.plantName,
     required this.imageURL,
     required this.isFavorated,
+    required this.isSelected,
     required this.description,
   });
 
@@ -23,6 +26,7 @@ class Plants {
   final String plantName;
   final String imageURL;
   bool isFavorated;
+  bool isSelected;
   final String description;
 
   static List<Plants> plantList = [
@@ -40,6 +44,7 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
     Plants(
       plantId: 1,
@@ -55,6 +60,7 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
     Plants(
       plantId: 2,
@@ -70,6 +76,7 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
     Plants(
       plantId: 3,
@@ -85,6 +92,7 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
     Plants(
       plantId: 4,
@@ -100,6 +108,7 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
     Plants(
       plantId: 5,
@@ -115,6 +124,7 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
     Plants(
       plantId: 6,
@@ -130,6 +140,7 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
     Plants(
       plantId: 7,
@@ -145,6 +156,7 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
     Plants(
       plantId: 8,
@@ -160,6 +172,20 @@ class Plants {
       description:
           'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
           'even the harshest weather condition.',
+      isSelected: false,
     ),
   ];
+  //Fetch the favorite items
+  static List<Plants> getFavoritedPlants() {
+    List<Plants> _travelList = Plants.plantList;
+    return _travelList.where((element) => element.isFavorated == true).toList();
+  }
+
+  //Fetch the cart items
+  static List<Plants> addedToCartPlants() {
+    List<Plants> _selectedPlants = Plants.plantList;
+    return _selectedPlants
+        .where((element) => element.isSelected == true)
+        .toList();
+  }
 }
