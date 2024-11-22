@@ -6,10 +6,10 @@ import 'package:page_transition/page_transition.dart';
 
 class PlantWidget extends StatelessWidget {
   const PlantWidget({
-    Key? key,
     required this.index,
     required this.plantList,
-  }) : super(key: key);
+    super.key,
+  });
   final int index;
   final List<Plants> plantList;
   @override
