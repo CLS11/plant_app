@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
-import 'package:plant_app/ui/login_page.dart';
 import 'package:plant_app/ui/root_page.dart';
+import 'package:plant_app/ui/screens/signin_page.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -28,7 +28,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (_) => const RootPage()),
+                  MaterialPageRoute(builder: (_) => const SignIn()),
                 );
               },
               child: const Text(
